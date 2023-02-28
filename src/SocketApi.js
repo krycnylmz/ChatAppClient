@@ -13,6 +13,7 @@ export const init = () => {
 
 export const sendMessage = (message) => {
   if (socket) socket.emit("new-message", message);
+  console.log("Şu mesaj gönderildi: ", message);
 };
 
 export const subscribeChat = (cb) => {
@@ -20,5 +21,13 @@ export const subscribeChat = (cb) => {
   socket.on("receive-message", (message) => {
     console.log("yeni bir mesaj var", message);
     cb(message);
+  });
+};
+
+export const subscribeInitMessages = (cb) => {
+  if (!socket) return;
+  socket.on("message-list", (messages) => {
+    console.log("initial", messages);
+    cb(messages);
   });
 };

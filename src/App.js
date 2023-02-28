@@ -4,7 +4,7 @@ import { ChatProvider } from "./context/ChatContext";
 
 function App() {
   return (
-    <div className="App">
+    <div className=" bg-slate-900">
       <ChatProvider>
         <Container />
       </ChatProvider>
